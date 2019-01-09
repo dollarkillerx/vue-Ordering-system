@@ -61,7 +61,6 @@ router.beforeEach((to,from,next)=>{
     alert("还没有登录请先登录");
     next('/login');
   }
-
 })
 
 new Vue({
