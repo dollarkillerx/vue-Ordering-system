@@ -24,7 +24,9 @@ Vue.use(VueRouter);
 const routes = [
   {path:'/',name:"homeLink",component:Home},
   {path:'/menu',name:'menuLink',component:Menu},
-  {path:'/admin',component:Admin},
+  {path:'/admin',component:Admin,beforeEnter:(to,from,next)=>{
+    alert('非登录状态不能访问此页面');
+    }},
   {path:'/about',component:About,redirect: '/about/contact',children:[
       {path:'/about/contact',name:'contactLink',component:Contact,redirect:'/about/contact/phonename',children:[
           {path:'/about/contact/phonename',name:'phoneName',component:PersonName},
@@ -48,20 +50,26 @@ const router = new VueRouter({
 //to 进入那个
 //from从那个离开
 //next去那个页面
-router.beforeEach((to,from,next)=>{
-  // alert("还没有登录请先登录");
-  // next();
-  // console.log(to);
+// router.beforeEach((to,from,next)=>{
+//   // alert("还没有登录请先登录");
+//   // next();
+//   // console.log(to);
+//
+//   //判断store.gettes.isLogin == false
+//   // if (to.path)
+//   if (to.path == '/login' || to.path =='/register'){
+//     next();
+//   }else{
+//     alert("还没有登录请先登录");
+//     next('/login');
+//   }
+// })
 
-  //判断store.gettes.isLogin == false
-  // if (to.path)
-  if (to.path == '/login' || to.path =='/register'){
-    next();
-  }else{
-    alert("还没有登录请先登录");
-    next('/login');
-  }
-})
+//后置钩子
+// router.afterEach((to,from)=>{//to去的  from离开的
+//   alert('afterEach');
+// })
+
 
 new Vue({
   el: '#app',
