@@ -24,9 +24,11 @@ Vue.use(VueRouter);
 const routes = [
   {path:'/',name:"homeLink",component:Home},
   {path:'/menu',name:'menuLink',component:Menu},
-  {path:'/admin',component:Admin,beforeEnter:(to,from,next)=>{
-    alert('非登录状态不能访问此页面');
-    }},
+  {path:'/admin',component:Admin,
+    // beforeEnter:(to,from,next)=>{
+    // alert('非登录状态不能访问此页面');
+    // }
+    },
   {path:'/about',component:About,redirect: '/about/contact',children:[
       {path:'/about/contact',name:'contactLink',component:Contact,redirect:'/about/contact/phonename',children:[
           {path:'/about/contact/phonename',name:'phoneName',component:PersonName},
