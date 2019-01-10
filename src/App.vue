@@ -25,12 +25,12 @@
 
 <script>
   import  AppHeader from './components/Header';
-export default {
-  name: 'app',
-  components:{
-    AppHeader
+  export default {
+    name: 'app',
+    components:{
+      AppHeader
+    }
   }
-}
 </script>
 
 <style>
